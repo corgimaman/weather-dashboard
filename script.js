@@ -71,7 +71,7 @@ window.addEventListener('load', function () {
 
   // Function for current weather:
   function searchWeather(searchValue) {
-    var endpoint = `http://api.weatherbit.io/v2.0/current?city=${searchValue}&key=52fd2e801a1a495aa466ea0447a2848b&units=I`
+    var endpoint = `https://api.weatherbit.io/v2.0/current?city=${searchValue}&key=52fd2e801a1a495aa466ea0447a2848b&units=I`
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
@@ -108,7 +108,7 @@ window.addEventListener('load', function () {
         $(todayEl).append(titleRow).append(row)
         $(todayEl).addClass("p-3 border border-info rounded")
         $(titleRow).prepend(currentImg)
-        
+
         getForecast(searchValue);
         uvColor(uvIndex);
       });
