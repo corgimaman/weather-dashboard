@@ -23,11 +23,9 @@ window.addEventListener('load', function () {
         var forecastEl = document.querySelector('#forecast');
         forecastEl.innerHTML = '<h4 class="m-3 w-100">5-Day Forecast:</h4>';
 
-        let forecastRowEl = $("<div>").addClass("row").attr("id", "forecastRow");
-
         for (var i = 0; i < data.data.length; i++) {
           let windSpd = Math.round(data.data[i].wind_spd);
-            var colEl = $("<div>").addClass("col mx-1")
+            var colEl = $("<div>").addClass("col-sm mx-1")
             var cardEl = $("<div>").addClass("card bg-primary text-white h-100");
             var windEl = $("<p>").addClass("card-text").text(`Wind Speed: ${windSpd} MPH`);
             var humidityEl = $("<p>").addClass("card-text").text(`Humidity : ${data.data[i].rh} %`);
@@ -42,16 +40,13 @@ window.addEventListener('load', function () {
             var p1El = $("<p>").addClass("card-text").html(`Temperature <br> Max: ${data.data[i].max_temp} °F <br>  Min: ${data.data[i].min_temp} °F`);
             var p2El = $("<p>").addClass("card-text").text(`Chance of Rain: ${data.data[i].pop}%`);
 
-            // Merge together and put on page
             $(colEl).append(cardEl);
             $(bodyEl).append(titleEl).append(imgEl).append(windEl).append(humidityEl).append(p1El).append(p2El);
             $(cardEl).append(bodyEl);
-            $(forecastRowEl).append(colEl);
-            $(forecastEl).append(forecastRowEl);
+            $("#forecast-cards-row").append(colEl);
           }
         }
       );
-      $("#forecastRow").wrap( "<div class='container px-5 py-5'></div>" );
 
   }
 
@@ -93,18 +88,17 @@ window.addEventListener('load', function () {
 
         let row = $("<div>").addClass("row");
 
-        let currentTemp = $("<div>").addClass("col-4").html(`Temperature: ${data.data[0].temp} °F <br> (Feels like: ${data.data[0].app_temp} °F)`);
+        let currentTemp = $("<div>").addClass("col-sm").html(`Temperature: ${data.data[0].temp} °F <br> (Feels like: ${data.data[0].app_temp} °F)`);
 
         let Humidity = Math.round(data.data[0].rh)
+        let currentHumid = $("<div>").addClass("col-sm").text(`Humidity: ${Humidity}%`);
 
-        let currentHumid = $("<div>").addClass("col-4").text(`Humidity: ${Humidity}%`);
+        let precip = $("<div>").addClass("col-sm").html(`Precipitation Chance: ${data.data[0].precip}%`);
 
         let uvIndex = Math.round(data.data[0].uv);
-        console.log(uvIndex)
+        let currentUV = $("<div>").addClass("col-sm").html(`UV Index: <span class="btn" id="uvBtn">${uvIndex}</span>`);
 
-        let currentUV = $("<div>").addClass("col-4").html(`UV Index: <span class="btn" id="uvBtn">${uvIndex}</span>`);
-
-        $(row).append(currentTemp).append(currentHumid).append(currentUV)
+        $(row).append(currentTemp).append(currentHumid).append(precip).append(currentUV)
         $(todayEl).append(titleRow).append(row)
         $(todayEl).addClass("p-3 border border-info rounded")
         $(titleRow).prepend(currentImg)
