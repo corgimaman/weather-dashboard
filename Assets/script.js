@@ -74,7 +74,6 @@ window.addEventListener('load', function () {
         todayEl = document.querySelector('#today');
         todayEl.textContent = ' ';
 
-        console.log(data);
         let titleRow = $("<div>").addClass("h3 text-center").text(`${data.data[0].city_name} (${new Date().toLocaleDateString()})`);
 
         let currentImg = $("<img>").attr(
