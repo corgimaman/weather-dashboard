@@ -33,7 +33,7 @@ window.addEventListener('load', function () {
             var bodyEl = $("<div>").addClass("card-body p-2");
             var titleEl = $("<h5>").addClass("card-title").text(new Date(data.data[i].valid_date).toLocaleDateString());
             var imgEl = $("<img>").attr('src', `https://www.weatherbit.io/static/img/icons/${data.data[i].weather.icon}.png`).addClass("forecastIcon");
-            var p1El = $("<p>").addClass("card-text").html(`<span style="text-decoration: underline;">Temperature</span> <br> Max: ${data.data[i].max_temp} °F <br>  Min: ${data.data[i].min_temp} °F`);
+            var p1El = $("<p>").addClass("card-text").html(`<span style="text-decoration: underline;">Temperature</span> <br> Max: ${data.data[i].max_temp}°F <br>  Min: ${data.data[i].min_temp}°F`);
             var p2El = $("<p>").addClass("card-text").text(`Chance of Rain: ${data.data[i].pop}%`);
 
             $(colEl).append(cardEl);
