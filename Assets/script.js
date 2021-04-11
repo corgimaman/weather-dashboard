@@ -24,26 +24,22 @@ window.addEventListener('load', function () {
         forecastEl.innerHTML = '<h4 class="m-3 w-100">5-Day Forecast:</h4>';
 
         for (var i = 0; i < data.data.length; i++) {
-          let windSpd = Math.round(data.data[i].wind_spd);
-            var colEl = $("<div>").addClass("col-sm mx-1")
-            var cardEl = $("<div>").addClass("card bg-primary text-white h-100");
+            let windSpd = Math.round(data.data[i].wind_spd);
+
+            var colEl = $("<div>").addClass("col-md mx-1 my-2")
+            var cardEl = $("<div>").addClass("card bg-primary text-center text-white h-100");
             var windEl = $("<p>").addClass("card-text").text(`Wind Speed: ${windSpd} MPH`);
             var humidityEl = $("<p>").addClass("card-text").text(`Humidity : ${data.data[i].rh} %`);
             var bodyEl = $("<div>").addClass("card-body p-2");
-            var titleEl = $("<h5>").addClass("card-title").text(new Date(
-              data.data[i].valid_date
-            ).toLocaleDateString());
-            var imgEl = $("<img>").attr(
-              'src',
-              `https://www.weatherbit.io/static/img/icons/${data.data[i].weather.icon}.png`
-            ).addClass("forecastIcon");
-            var p1El = $("<p>").addClass("card-text").html(`Temperature <br> Max: ${data.data[i].max_temp} °F <br>  Min: ${data.data[i].min_temp} °F`);
+            var titleEl = $("<h5>").addClass("card-title").text(new Date(data.data[i].valid_date).toLocaleDateString());
+            var imgEl = $("<img>").attr('src', `https://www.weatherbit.io/static/img/icons/${data.data[i].weather.icon}.png`).addClass("forecastIcon");
+            var p1El = $("<p>").addClass("card-text").html(`<span style="text-decoration: underline;">Temperature</span> <br> Max: ${data.data[i].max_temp} °F <br>  Min: ${data.data[i].min_temp} °F`);
             var p2El = $("<p>").addClass("card-text").text(`Chance of Rain: ${data.data[i].pop}%`);
 
             $(colEl).append(cardEl);
             $(bodyEl).append(titleEl).append(imgEl).append(windEl).append(humidityEl).append(p1El).append(p2El);
             $(cardEl).append(bodyEl);
-            $("#forecast-cards-row").append(colEl);
+            $(forecastEl).append(colEl);
           }
         }
       );
@@ -111,7 +107,7 @@ window.addEventListener('load', function () {
   function uvColor(uvIndex) {
         if (uvIndex < 3) {
           $("#uvBtn").addClass('btn-success');         
-        } if (uvIndex < 7) {
+        } else if (uvIndex < 7) {
           $("#uvBtn").addClass('btn-warning');
         } else {
           $("#uvBtn").addClass('btn-danger');
