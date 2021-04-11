@@ -1,4 +1,4 @@
-# Weather Dashboard
+# [Weather Dashboard](corgimaman.github.io/weather-dashboard/)
 
 This is a weather dashboard to help find the current weather and a five day forecast for any city in the world. This application uses a server-side API provided by [WeatherBit](https://www.weatherbit.io/).
 
