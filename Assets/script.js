@@ -29,7 +29,7 @@ window.addEventListener('load', function () {
             var colEl = $("<div>").addClass("col-md mx-1 my-2")
             var cardEl = $("<div>").addClass("card bg-primary text-center text-white h-100");
             var windEl = $("<p>").addClass("card-text").text(`Wind Speed: ${windSpd} MPH`);
-            var humidityEl = $("<p>").addClass("card-text").text(`Humidity : ${data.data[i].rh} %`);
+            var humidityEl = $("<p>").addClass("card-text").text(`Humidity : ${data.data[i].rh}%`);
             var bodyEl = $("<div>").addClass("card-body p-2");
             var titleEl = $("<h5>").addClass("card-title").text(new Date(data.data[i].valid_date).toLocaleDateString());
             var imgEl = $("<img>").attr('src', `https://www.weatherbit.io/static/img/icons/${data.data[i].weather.icon}.png`).addClass("forecastIcon");
@@ -75,7 +75,7 @@ window.addEventListener('load', function () {
         todayEl.textContent = ' ';
 
         console.log(data);
-        let titleRow = $("<div>").addClass("h3").text(`${data.data[0].city_name} (${new Date().toLocaleDateString()})`);
+        let titleRow = $("<div>").addClass("h3 text-center").text(`${data.data[0].city_name} (${new Date().toLocaleDateString()})`);
 
         let currentImg = $("<img>").attr(
           'src',
@@ -84,15 +84,15 @@ window.addEventListener('load', function () {
 
         let row = $("<div>").addClass("row");
 
-        let currentTemp = $("<div>").addClass("col-sm").html(`Temperature: ${data.data[0].temp} °F <br> (Feels like: ${data.data[0].app_temp} °F)`);
+        let currentTemp = $("<div>").addClass("col-sm text-center").html(`Temperature: ${data.data[0].temp} °F <br> (Feels like: ${data.data[0].app_temp} °F)`);
 
         let Humidity = Math.round(data.data[0].rh)
-        let currentHumid = $("<div>").addClass("col-sm").text(`Humidity: ${Humidity}%`);
+        let currentHumid = $("<div>").addClass("col-sm text-center").text(`Humidity: ${Humidity}%`);
 
-        let precip = $("<div>").addClass("col-sm").html(`Precipitation Chance: ${data.data[0].precip}%`);
+        let precip = $("<div>").addClass("col-sm text-center").html(`Precipitation Chance: ${data.data[0].precip}%`);
 
         let uvIndex = Math.round(data.data[0].uv);
-        let currentUV = $("<div>").addClass("col-sm").html(`UV Index: <span class="btn" id="uvBtn">${uvIndex}</span>`);
+        let currentUV = $("<div>").addClass("col-sm text-center").html(`UV Index: <span class="btn" id="uvBtn">${uvIndex}</span>`);
 
         $(row).append(currentTemp).append(currentHumid).append(precip).append(currentUV)
         $(todayEl).append(titleRow).append(row)
@@ -118,7 +118,7 @@ window.addEventListener('load', function () {
   function makeRow(searchValue) {
     // Create a new `li` element and add classes/text to it
     var liEl = document.createElement('li');
-    liEl.classList.add('list-group-item', 'list-group-item-action');
+    liEl.classList.add('list-group-item', 'list-group-item-action', 'text-center');
     liEl.id = searchValue;
     var text = searchValue;
     liEl.textContent = text;
